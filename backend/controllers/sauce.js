@@ -1,9 +1,8 @@
 const Sauce = require("../models/sauce");
 const fs = require("fs");
 
-exports.createsauce = (req, res, next) => {
+exports.createSauce = (req, res, next) => {
 	const sauceObject = JSON.parse(req.body.sauce);
-	delete sauceObject._id;
 	const sauce = new Sauce({
 		...sauceObject,
 		imageUrl: `${req.protocol}://${req.get("host")}/images/${req.file.filename}`,
@@ -14,33 +13,48 @@ exports.createsauce = (req, res, next) => {
 		.catch((error) => res.status(400).json({ error }));
 };
 
+
+exports.like = (req, res, next) => {
+    switch(req.body.like) {
+    case 1:
+        Sauce.updateOne({ _id: req.params.id }, {
+            $inc: {likes: 1},
+            $push: { usersLiked: req.body.userId },
+            _id: req.params.id
+        })
+        .then( sauce => { res.status(201).json({ message: `Et un like de plus pour cette sauce !` }); })
+        .catch((error) => { res.status(400).json({ error: error }); });
+    break;
+
+	case -1:
+        Sauce.updateOne({ _id: req.params.id }, {
+            $inc: {dislikes: 1},
+            $push: { usersDisliked: req.body.userId },
+            _id: req.params.id
+        })
+        .then( sauce => { res.status(201).json({ message: `Oh... vous n'avez pas aimé cette sauce.` }); })
+        .catch((error) => { res.status(400).json({ error: error }); });
+    break;
+
+	default: console.log("test");
+	break;
+    }
+}
+
+
 exports.getOneSauce = (req, res, next) => {
-	Sauce.findOne({
-		_id: req.params.id,
-	})
-		.then((sauce) => {
-			res.status(200).json(sauce);
-		})
-		.catch((error) => {
-			res.status(404).json({
-				error: error,
-			});
-		});
+    Sauce.findOne()
+    .then(sauce => res.status(200).json(sauce))
+    .catch(error => res.status(400).json({ error }))
 };
 
 exports.getAllSauce = (req, res, next) => {
-	Sauce.find()
-		.then((sauces) => {
-			res.status(200).json(sauces);
-		})
-		.catch((error) => {
-			res.status(400).json({
-				error: error,
-			});
-		});
+    Sauce.find()
+    .then(sauces => res.status(200).json(sauces))
+    .catch(error => res.status(400).json({ error }))
 };
 
-exports.modifysauce = (req, res, next) => {
+exports.modifySauce = (req, res, next) => {
 	const sauceObject = req.file
 		? {
 				...JSON.parse(req.body.sauce),
@@ -62,5 +76,5 @@ exports.deleteOne = (req, res, next) => {
 					.catch((error) => res.status(400).json({ error }));
 			});
 		})
-		.catch((error) => res.status(500).json({ error }));
-};
+		.catch((error) => res.status(400).json({ error }));
+	};
