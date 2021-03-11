@@ -2,7 +2,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const path = require("path");
-const helmet = require("helmet")
 
 const userRoutes = require("./routes/user");
 const sauceRoutes = require("./routes/sauce");
@@ -11,7 +10,7 @@ const app = express();
 
 mongoose
 	.connect(
-		"mongodb+srv://Admin:ImNLgnrLjPnHIXpM@cluster0.3cjqz.mongodb.net/dataBase?retryWrites=true&w=majority",
+		"mongodb+srv://Admin:ImNLgnrLjPnHIXpM@cluster0.3cjqz.mongodb.net/dataBase?retryWrites=true&w=majority", //mettre en place dotenv pour ne pas donner le token directement
 		{ useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }
 	)
 	.then(() => console.log("Connexion à MongoDB réussie !"))
