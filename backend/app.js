@@ -4,14 +4,14 @@ require('dotenv').config();
 
 // FR : import des différents modules, frameworks et fichiers utiles
 // EN : import of differents modules, framworks and useful files
-const bodyParser = require("body-parser");
-const express = require("express");
-const helmet = require("helmet");
-const path = require("path");
-const mongoose = require("mongoose");
+const bodyParser 	= require("body-parser");
+const express 		= require("express");
+const helmet 		= require("helmet");
+const path 			= require("path");
+const mongoose 		= require("mongoose");
 
-const sauceRoutes = require("./routes/sauce");
-const userRoutes = require("./routes/user");
+const sauceRoutes 	= require("./routes/sauce");
+const userRoutes 	= require("./routes/user");
 
 const app = express();
 
