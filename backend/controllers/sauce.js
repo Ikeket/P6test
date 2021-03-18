@@ -1,7 +1,6 @@
 const Sauce = require("../models/sauce");
 const fs = require("fs");
 
-
 exports.createSauce = (req, res, next) => {
 	const sauceObject = JSON.parse(req.body.sauce);
 	delete sauceObject._id;
@@ -13,7 +12,6 @@ exports.createSauce = (req, res, next) => {
 		.then(() => res.status(201).json({ message: "La sauce a été créée !" }))
 		.catch((error) => res.status(400).json({ error }));
 };
-
 
 exports.getOneSauce = (req, res, next) => {
     Sauce.findOne({_id: req.params.id})
@@ -52,8 +50,7 @@ exports.deleteSauce = (req, res, next) => {
 		.catch((error) => res.status(400).json({ error }));
 	};
 
-
-	exports.like = (req, res, next) => {
+exports.like = (req, res, next) => {
 		const likes = req.body.like;
   if (likes === 1) {
     Sauce.updateOne({ _id: req.params.id }, { $inc: { likes: 1 }, $push: { usersLiked: req.body.userId } })

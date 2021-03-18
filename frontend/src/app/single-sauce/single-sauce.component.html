@@ -6,6 +6,11 @@
     <p class="manufacturer">by {{ sauce?.manufacturer }}</p>
     <h3>Description</h3>
     <p>{{ sauce.description }}</p>
+    <!-- <h3>Ingrédients</h3>
+    <p>{{ sauce.mainPepper }}</p> -->
+    FR : rajout des ingrédients composants la sauce
+    EN : add ingredients
+
     <div class="like-buttons" *ngIf="!likePending">
       <div class="likes">
         <i [ngClass]="{ 'fas liked': liked, 'far': !liked, 'disabled': disliked }" class="like fa-thumbs-up fa-lg" (click)="onLike()"></i>
