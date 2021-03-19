@@ -10,4 +10,5 @@
   </div>
   <button mat-raised-button color="primary" [disabled]="loginForm.invalid" (click)="onLogin()">LOGIN</button>
   <p class="text-danger" *ngIf="errorMsg">{{ errorMsg }}</p>
+  <!-- Ici, il faudrait changer le nom du message d'erreur afin d'indiquer correctement à l'utilisateur le type d'erreur -->
 </form>

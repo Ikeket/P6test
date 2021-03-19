@@ -7,33 +7,24 @@ Content-Type: application/json
 }
 
 ###
-
 POST http://localhost:3000/api/auth/login
 Content-Type: application/json
 
 {
-    "email": "email@email.com",
-    "password": "password"
+    "email": "ban@gmail.com",
+    "password": "123456"
 }
 
 ###
 GET http://localhost:3000/api/sauces
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MDQyNDM2MDcxNmEzZjFmZjQxZTIxYTgiLCJpYXQiOjE2MTQ5NTUzOTIsImV4cCI6MTYxNTA0MTc5Mn0.jB_fe6l0GtsEwZoOTRvm-o3AwYWbmKnEYJN5eQxmbac
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MDUzNWRlZTIyNjMzMjEzYzAyZWY4M2IiLCJpYXQiOjE2MTYwNzc3MDAsImV4cCI6MTYxNjE2NDEwMH0.f2UWb2POMZB69jGiNPBvZFvl0cmnR06nYobs3G2PvmA
 
 ###
-PUT http://localhost:3000/api/sauces/60423df94b3ff60e4c9362e1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MDQyNDM2MDcxNmEzZjFmZjQxZTIxYTgiLCJpYXQiOjE2MTQ5NTUzOTIsImV4cCI6MTYxNTA0MTc5Mn0.jB_fe6l0GtsEwZoOTRvm-o3AwYWbmKnEYJN5eQxmbac
+PUT http://localhost:3000/api/sauces/6049fbfc480a3a170cc061cf
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MDUzNWRlZTIyNjMzMjEzYzAyZWY4M2IiLCJpYXQiOjE2MTYwNzc3MDAsImV4cCI6MTYxNjE2NDEwMH0.f2UWb2POMZB69jGiNPBvZFvl0cmnR06nYobs3G2PvmA
 Content-Type: application/json
 
 {
     "heat": "9"
 }
 
-# {
-#     "name": "Salut",
-#     "manufacturer": "zerrzerzer",
-#     "description": "dezrzerrezrze",
-#     "mainPepper": "dzedezez",
-#     "heat": "3",
-#     "userId": "60424360716a3f1ff41e21a8"
-#
