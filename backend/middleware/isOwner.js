@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const Sauce = require('../models/sauce');
 
+// FR : initialise les tokens utilisateurs afin de permettre les modifications et suppressions de sauce par le propriétaire uniquement
 module.exports = (req, res, next) => {
 	try {
 		const token = req.headers.authorization.split(' ')[1];

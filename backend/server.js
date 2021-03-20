@@ -1,7 +1,9 @@
 const http = require('http');
 const app = require('./app');
 
-const normalizePort = (val) => {
+// FR : convertit le port en nombre
+// EN : convert port to number
+const parsePort = (val) => {
 	const port = parseInt(val, 10);
 	if (isNaN(port)) {
 		return val;
@@ -12,9 +14,13 @@ const normalizePort = (val) => {
 	return false;
 };
 
-const port = normalizePort(process.env.PORT || '3000');
+// FR : initialise le port
+// EN : initilizes the port
+const port = parsePort(process.env.PORT || '3000');
 app.set('port', port);
 
+// FR : gestion des erreurs
+// EN : management of errors
 const errorHandler = (error) => {
 	if (error.syscall !== 'listen') {
 		throw error;
@@ -36,6 +42,8 @@ const errorHandler = (error) => {
 	}
 };
 
+// FR : création du serveur
+// EN : creation of server
 const server = http.createServer(app);
 server.on('error', errorHandler);
 server.on('listening', () => {

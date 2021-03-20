@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+// FR : initialisation du schéma d'une sauce
+// EN : initialization of the shema of a sauce
 const sauceSchema = mongoose.Schema({
 	userId: { type: String, required: true },
 	name: { type: String, required: true },
